@@ -21,7 +21,20 @@
 WIREFRAME 
 ![Imgur](https://i.imgur.com/AgUKJs2l.png)
 
- PSEUDOCODE 
+ # PSEUDOCODE 
 
- 1 // GENERATE BOARD 8X8 
- addboard()
+ 1 // GENERATE BOARD 8X8 (With 24 pieces; 12 red, 12 white on either side)
+ 2 // Set score to 0
+ 3// Set timer to 5 minutes 
+ 4// Designate player 1(red) to go first with white going second. 
+ 5// let player 1 piece move diagnolly to capture player 2 piece (so long as empty space exists behind it)
+ 6// set captured piece to their respective spaces in the left and right of the board. 
+ 7// let player 2 proceed next and continue moving pieces as player 1
+ 8// If red piece moves to end of white player board || If white piece moves to end of red player board give piece class of 'king'
+ 9// 'King' piece should be able to move in any direction where is regular piece can only move diagnolly. 
+ 10// Continue game per turn until 
+ - Player 1 captures all white pieces || player 2 captures all red pieces
+  or 
+  - 5 minute timer runs out (Player with the most pieces captured wins)
+  11// Set a playAgain function with addEvent('click') to generate a play again button and reset the board. 
+  12// Continue having fun!!!
