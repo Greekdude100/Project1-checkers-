@@ -19,7 +19,7 @@
 
   
 WIREFRAME 
-![Imgur]((https://i.imgur.com/AgUKJs2l.png))
+![Imgur](https://i.imgur.com/AgUKJs2l.png)
 
  PSEUDOCODE 
 
