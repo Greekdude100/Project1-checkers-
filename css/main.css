@@ -1,0 +1,110 @@
+/* body {
+    display:flex;
+    flex-direction:column;
+    height:800px;
+    
+    
+} */
+
+
+h1 {
+    color:red;
+    text-align: center;
+}
+
+
+
+
+#checkers-board {
+    display: grid;
+    grid-template-columns: repeat(8 ,5.5vmin);
+    grid-template-rows:repeat (8 5vmin);
+    grid-area: center;
+    position:absolute; right: 37%;
+    max-height: 450px;
+    max-width: 450px;
+    
+    
+    
+    
+    
+    
+    
+}
+   
+    
+    
+
+#checkers-board div {
+    height: 50px;
+    width: 50px;
+    display: inline-block;
+    border-style: solid;
+    position:static;
+    
+    
+
+}
+
+player {
+    height: 15%;
+    width: 30%;
+    display: flex;
+    flex-direction: column ;
+    border-style: solid ;
+    position:absolute; bottom:2%; right: 36%;
+   
+    
+}
+    
+div#player1 {
+    font-size: 30px;
+    color: red;
+}
+
+
+div#player2 {
+    text-align:right;
+    margin-top:-40px;
+    font-size: 30px;
+}
+
+div#redpieces {
+    color:red;
+    height:300px;
+    width:200px;
+    display:flex;
+    flex-direction: column;
+    border-style: solid;
+    position:relative; top: 15%; right:70%; left:8%;
+    margin-right:5px;
+}
+
+div#blackpieces {
+    height:300px;
+    width:200px;
+   display: flex;
+   flex-direction:column;
+   border-style:solid;
+   position:relative; bottom: -40%; left: 70%; 
+    
+}
+
+
+div#wrapper {
+    margin-left:-5%;
+    margin-top:5%;
+    
+}
+
+@media screen and (max-width: 1117px) {
+    #checkers-board{
+    grid-template-columns: repeat(8 ,5.5vmin);
+    grid-template-rows:repeat (8 5vmin);
+    }
+    #checkers-board div{
+        height:40px;
+        width:40px;
+    }
+
+}
