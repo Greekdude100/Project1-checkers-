@@ -38,6 +38,7 @@ div#redpieces {
     height: 200px;
     color:red;
 }
+
 div#blackpieces {
     display: flex;
     border-style: solid;
@@ -58,8 +59,7 @@ div#blackpieces {
 }
 
 row {
-    height:50px;
-    width:50px;
+    grid-area:1/4;
 }
 
 button {
@@ -68,6 +68,27 @@ button {
     position:relative;
     bottom:-300px;
 }
+
+div.color {
+    background-color: burlywood;
+}
+
+div.piece {
+    height: 25px;
+    width: 25px;
+    border: 1px solid black;
+    border-radius:60%;
+}
+
+div.black {
+    background-color: black;
+}
+
+div.red {
+    background-color: red;
+}
+    
+
 
      /* @media screen and (max-width: 1117px) {
     #checkers-board{
