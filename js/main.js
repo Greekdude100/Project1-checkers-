@@ -6,22 +6,32 @@ const colors = {
 
 
 
-const Checkerboard=document.querySelector("#c0r0")
-console.log('this is topLeft', Checkerboard)
-const piece=document.createElement("div")
-piece.classList.add("piece", "black")
-Checkerboard.appendChild(piece)
-console.log('this is piece', piece)
+const checkerboard=document.querySelector("#checkers-board")
+console.log('this is checkerboard', checkerboard)
+const blackPiece=document.createElement("div")
+blackPiece.classList.add("piece", "black")
+const redPiece=document.createElement("div")
+redPiece.classList.add("piece", "red")
+console.log('this is piece', blackPiece)
 
 //Add black pieces to white spaces from c0r0 to c6r2.
-function addPieces(blackboard) {
-    if (piece === "#c0r0"+2)
-    return true;
-    else (piece <= "#c6r2")
-    return false;
-}
-console.log(addPieces())
-
+function addPiece() {
+    console.log('checkerboard', checkerboard)
+for (let i = 0; i <= 7; i++) {
+    for (let j = 0; j <= 7; j++) {
+      const square = document.getElementById(`c${j}r${i}`);
+      console.log('square', square)
+      if ((i + j) % 2 === 0 && i <= 2) { // Place black pieces
+        const piece = blackPiece.cloneNode(true);
+        square.appendChild(piece);
+      } else if ((i + j) % 2 === 0 && i >= 6) { // Place red pieces
+        const piece = redPiece.cloneNode(true);
+        square.appendChild(piece);
+      }
+    }
+  }
+} 
+addPiece()
 
 
 //   /*----- event listeners -----*/
