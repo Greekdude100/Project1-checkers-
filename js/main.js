@@ -1,40 +1,110 @@
  /*----- constants -----*/
-const colors = {
-    0: 'red',
-    1: 'black'
+    const COLORS = {
+     0: 'red',
+     1: 'black'
+     }
+
+let player1 = 0
+let player2 = 1
+let board
+let redScore =12;
+let blackScore =12;
+
+function init() {
+ board = [
+   [ null,1,null,1,null,1,null,1]
+   [ 1,null,1,null,1,null,1,null]
+   [null,1,null,1,null,1,null,1]
+   [null,null,null,null,null,null,null,null]
+   [null,null,null,null,null,null,null,null]
+   [null,0,null,0,null,0,null,0]
+   [0,null,0,null,0,null,0,null]
+   [null,0,null,0,null,0,null,0]
+]
+turn =1
+winner=null
+render()
 }
 
+function render() {
+    renderboard()
+    rendermessage()
+    rendercontrols()
+    rendermovement()
+}
 
 
 const checkerboard=document.querySelector("#checkers-board")
 console.log('this is checkerboard', checkerboard)
-const blackPiece=document.createElement("div")
-blackPiece.classList.add("piece", "black")
-const redPiece=document.createElement("div")
-redPiece.classList.add("piece", "red")
-console.log('this is piece', blackPiece)
+let redpiece = document.querySelectorAll('.redpiece')
+let blackpiece =document.querySelectorAll('.blackpiece')
 
-//Add black pieces to white spaces from c0r0 to c6r2.
-function addPiece() {
-    console.log('checkerboard', checkerboard)
-for (let i = 0; i <= 7; i++) {
-    for (let j = 0; j <= 7; j++) {
-      const square = document.getElementById(`c${j}r${i}`);
-      console.log('square', square)
-      if ((i + j) % 2 === 0 && i <= 2) { // Place black pieces
-        const piece = blackPiece.cloneNode(true);
-        square.appendChild(piece);
-      } else if ((i + j) % 2 === 0 && i >= 6) { // Place red pieces
-        const piece = redPiece.cloneNode(true);
-        square.appendChild(piece);
-      }
+
+
+//Add black pieces to white spaces and red pieces to brown spaces.
+// function addPiece() {
+//     console.log('checkerboard', checkerboard)
+// for (let i = 0; i <= 7; i++) {
+//     for (let j = 0; j <= 7; j++) {
+//       const square = document.getElementById(`c${j}r${i}`);
+//       console.log('square', square)
+//       if ((i + j) % 2 === 0 && i <= 2) { // Place black pieces
+//         const piece = blackPiece.cloneNode(true);
+//         square.appendChild(piece);
+//       } else if ((i + j) % 2 === 0 && i >= 5) { // Place red pieces
+//         const piece = redPiece.cloneNode(true);
+//         square.appendChild(piece);
+//       }
+//     }
+//   }
+// } 
+// addPiece()
+
+
+function renderBoard() {
+    board.forEach((colArr, colIdx) => {
+        colArr.forEach((cellVal, rowIdx) => {
+            console.log(cellVal, rowIdx)
+            const cellId = `c${colIdx}r${rowIdx}`
+            const cellEl = document.getElementById(`c${j}r${i}`)
+        })
+    })
+}
+            
+        
+        
+
+// function moveChecker (board, fromRow, fromCol, toRow, toCol) {
+//     if (!isValidMove(board, fromRow, fromCol, toRow, toCol)) {
+//         console.log("Invalid move!");
+//         return false;
+//     }
+        
+//     board[toRow][toCol] = board[fromRow][fromCol];
+//     board[fromRow][fromCol] = null; // set the old position to an empty square
+  
+//     return true;
+    
+// }
+
+
+
+
+//event listener
+function givesPiecesEventListeners() {
+    if (player1) {
+        for(let i =0; i< redpiece.length; i++) {
+            redsPieces[i].addEventListener("click", getPlayerPieces)
+        }
+     } else {
+            for (let i =0; i<blackpiece.length; i++) {
+                blackpiece[i].addEventListener("click", getPlayerPieces)
+            }
+        }
     }
-  }
-} 
-addPiece()
+    givesPiecesEventListeners()
 
 
-//   /*----- event listeners -----*/
 
 
  

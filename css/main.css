@@ -54,7 +54,7 @@ div#blackpieces {
 #checkers-board div {
     height:50px;
     width:50px;
-    display:inline-block;
+    display:block;
     border-style:solid;
 }
 
@@ -70,22 +70,33 @@ button {
 }
 
 div.color {
+    text-align: center;
     background-color: burlywood;
 }
 
-div.piece {
+/* div.piece {
     height: 25px;
     width: 25px;
     border: 1px solid black;
     border-radius:60%;
-}
+} */
 
-div.black {
+.blackpiece {
+    height:50px;
+    width:50px;
+    margin-top:0px;
     background-color: black;
+    border: 1px solid white;
+    border-radius: 50px;
 }
 
-div.red {
+.redpiece {
+    height:50px;
+    width:50px;
+    margin-top:0px;
     background-color: red;
+    border: 1px solid white;
+    border-radius: 50px;
 }
     
 
