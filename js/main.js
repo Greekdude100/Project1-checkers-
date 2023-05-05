@@ -70,39 +70,146 @@ function renderBoard() {
         })
     })
 }
-            
-        
-        
 
-// function moveChecker (board, fromRow, fromCol, toRow, toCol) {
-//     if (!isValidMove(board, fromRow, fromCol, toRow, toCol)) {
-//         console.log("Invalid move!");
-//         return false;
-//     }
-        
-//     board[toRow][toCol] = board[fromRow][fromCol];
-//     board[fromRow][fromCol] = null; // set the old position to an empty square
+function isValidMove(fromRow, fromCol, toRow, toCol, color) {
+    // Check if the destination cell is empty
+    if (board[toRow][toCol] !== null) {
+      return false;
+    }
   
-//     return true;
+    // Check if the move is diagonal
+    const rowDiff = Math.abs(toRow - fromRow);
+    const colDiff = Math.abs(toCol - fromCol);
+    if (rowDiff !== colDiff) {
+      return false;
+    }
+  
+    // Check if the move is forward (unless the checker is a king)
+    if (color === 'red' && toRow > fromRow) {
+      return false;
+    }
+    if (color === 'black' && toRow < fromRow) {
+      return false;
+    }
+  
+    // Check if the move is a jump (capture)
+    if (rowDiff === 2 && colDiff === 2) {
+      const capturedRow = (fromRow + toRow) / 2;
+      const capturedCol = (fromCol + toCol) / 2;
+      if (board[capturedRow][capturedCol] === null ||
+          board[capturedRow][capturedCol] === color) {
+        return false;
+      }
+      // Remove the captured checker from the board
+      board[capturedRow][capturedCol] = null;
+    }
+  
+    return true;
+  }
+            
+    //For example, to access the square at row r and column c, you can use board[r][c].
+
+function handlePieceClick(event) {
+    const piece = event.target;
+    const pieceRow = parseInt(piece.dataset.row);
+    const pieceCol = parseInt(piece.dataset.col);
     
-// }
+    // Check if the clicked piece belongs to the current player
+    if (board[pieceRow][pieceCol] !== currentPlayer) {
+      return;
+    }
+    
+    // Add a 'selected' class to the clicked piece to indicate it's selected
+    piece.classList.add('selected');
+  }
+  
+  function handleSquareClick(event) {
+    const square = event.target;
+    const squareRow = parseInt(square.dataset.row);
+    const squareCol = parseInt(square.dataset.col);
+    
+    // Check if a piece is currently selected
+    const selectedPiece = document.querySelector('.selected');
+    if (!selectedPiece) {
+      return;
+    }
+    
+    // Get the position of the selected piece
+    const selectedPieceRow = parseInt(selectedPiece.dataset.row);
+    const selectedPieceCol = parseInt(selectedPiece.dataset.col);
+    
+    // Check if the move is valid
+    if (isValidMove(selectedPieceRow, selectedPieceCol, squareRow, squareCol)) {
+      // Update the board
+      board[squareRow][squareCol] = board[selectedPieceRow][selectedPieceCol];
+      board[selectedPieceRow][selectedPieceCol] = null;
+      
+      // Move the piece on the board
+      const pieceToMove = document.querySelector(`[data-row="${selectedPieceRow}"][data-col="${selectedPieceCol}"]`);
+      square.appendChild(pieceToMove);
+      
+      // Remove the 'selected' class from the piece
+      selectedPiece.classList.remove('selected');
+      
+      // Switch to the next player's turn
+      currentPlayer = (currentPlayer === 0) ? 1 : 0;
+    }
+  }    
+        
+  
+
+function handlePieceClick(event) {
+    const piece = event.target;
+    const pieceRow = parseInt(piece.dataset.row);
+    const pieceCol = parseInt(piece.dataset.col);
+    
+    // Check if the clicked piece belongs to the current player
+    if (board[pieceRow][pieceCol] !== currentPlayer) {
+      return;
+    }
+    
+    // Add a 'selected' class to the clicked piece to indicate it's selected
+    piece.classList.add('selected');
+  }
+  
+  function handleSquareClick(event) {
+    const square = event.target;
+    const squareRow = parseInt(square.dataset.row);
+    const squareCol = parseInt(square.dataset.col);
+    
+    // Check if a piece is currently selected
+    const selectedPiece = document.querySelector('.selected');
+    if (!selectedPiece) {
+      return;
+    }
+    
+    // Get the position of the selected piece
+    const selectedPieceRow = parseInt(selectedPiece.dataset.row);
+    const selectedPieceCol = parseInt(selectedPiece.dataset.col);
+    
+    // Check if the move is valid
+    if (isValidMove(selectedPieceRow, selectedPieceCol, squareRow, squareCol)) {
+      // Update the board
+      board[squareRow][squareCol] = board[selectedPieceRow][selectedPieceCol];
+      board[selectedPieceRow][selectedPieceCol] = null;
+      
+      // Move the piece on the board
+      const pieceToMove = document.querySelector(`[data-row="${selectedPieceRow}"][data-col="${selectedPieceCol}"]`);
+      square.appendChild(pieceToMove);
+      
+      // Remove the 'selected' class from the piece
+      selectedPiece.classList.remove('selected');
+      
+      // Switch to the next player's turn
+      currentPlayer = (currentPlayer === 0) ? 1 : 0;
+    }
+  }
 
 
 
 
 //event listener
-function givesPiecesEventListeners() {
-    if (player1) {
-        for(let i =0; i< redpiece.length; i++) {
-            redsPieces[i].addEventListener("click", getPlayerPieces)
-        }
-     } else {
-            for (let i =0; i<blackpiece.length; i++) {
-                blackpiece[i].addEventListener("click", getPlayerPieces)
-            }
-        }
-    }
-    givesPiecesEventListeners()
+
 
 
 
